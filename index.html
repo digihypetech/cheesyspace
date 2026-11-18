@@ -3,21 +3,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cheesy Space – Pizza Deals &amp; Takeaway in Township, Lahore</title>
-  <meta name="description" content="Order cheesy pizzas from Rs. 249 and special deals from Rs. 749 at Cheesy Space, Township, Lahore. Open daily 4 PM – 3 AM." />
-  <meta name="keywords" content="Cheesy Space, Pizza Township Lahore, Pizza Deals Lahore, Takeaway Pizza Lahore, Asif Tikka Road Pizza" />
+  <title>Cheesy Space – Pizza Deals, Home Delivery &amp; Take Away in Township, Lahore</title>
+  <meta name="description" content="Order cheesy pizzas from Rs. 249 and special deals from Rs. 749 at Cheesy Space, Township, Lahore. Home Delivery &amp; Take Away daily 4 PM – 3 AM." />
+  <meta name="keywords" content="Cheesy Space, Pizza Township Lahore, Pizza Deals Lahore, Home Delivery Pizza Lahore, Take Away Pizza Lahore, Asif Tikka Road Pizza" />
   <meta name="theme-color" content="#063B5B" />
 
   <!-- OpenGraph Social Metadata -->
   <meta property="og:type" content="restaurant" />
   <meta property="og:site_name" content="Cheesy Space" />
-  <meta property="og:title" content="Cheesy Space – Pizza Deals &amp; Takeaway in Township, Lahore" />
+  <meta property="og:title" content="Cheesy Space – Pizza Deals, Home Delivery &amp; Take Away in Township, Lahore" />
   <meta property="og:description" content="Big Pizza. Bigger Cheese. Out-of-this-world taste! Explore single pizzas from Rs. 249 and 5 special deals starting at Rs. 749." />
   <meta property="og:image" content="./src/assets/images/hero_cheesy_pizza_1795028299098.jpg" />
 
   <!-- Twitter Card Metadata -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Cheesy Space – Pizza Deals &amp; Takeaway in Township, Lahore" />
+  <meta name="twitter:title" content="Cheesy Space – Pizza Deals, Home Delivery &amp; Take Away in Township, Lahore" />
   <meta name="twitter:description" content="Order freshly baked cheesy pizzas from Rs. 249 and deals from Rs. 749 in Township, Lahore. Open daily 4 PM – 3 AM." />
   <meta name="twitter:image" content="./src/assets/images/hero_cheesy_pizza_1795028299098.jpg" />
 
@@ -27,7 +27,7 @@
     "@context": "https://schema.org",
     "@type": "Restaurant",
     "name": "Cheesy Space",
-    "description": "Pizza restaurant in Township, Lahore serving freshly baked cheesy pizzas and special family deals for takeaway.",
+    "description": "Pizza restaurant in Township, Lahore serving freshly baked cheesy pizzas and special family deals for home delivery and take away.",
     "servesCuisine": "Pizza, Fast Food",
     "priceRange": "PKR 249 - PKR 2,099",
     "telephone": "+92-326-3041122",
@@ -895,7 +895,7 @@
     /* Topping Rate Strip */
     .topping-rates-bar {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(2, 1fr);
       gap: 10px;
       background-color: var(--light-bg);
       border: 1px solid var(--surface-border);
@@ -905,7 +905,13 @@
       font-size: 0.84375rem;
     }
 
-    @media (max-width: 540px) {
+    @media (min-width: 720px) {
+      .topping-rates-bar {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    @media (max-width: 480px) {
       .topping-rates-bar {
         grid-template-columns: 1fr;
         gap: 6px;
@@ -924,6 +930,7 @@
     .rate-price {
       font-weight: 800;
       color: var(--space-blue);
+      white-space: nowrap;
     }
 
     /* Per-Pizza Configuration Rows */
@@ -1041,18 +1048,57 @@
       font-size: 1rem;
     }
 
-    .order-type-box {
+    .order-type-toggle {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px;
+      padding: 4px;
+      border-radius: var(--radius-sm);
+      border: 1.5px solid var(--surface-border);
+      background-color: var(--light-bg);
       min-height: 44px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+    }
+
+    .order-type-btn {
+      border: none;
+      border-radius: 4px;
+      padding: 8px 10px;
+      font-weight: 700;
+      font-size: 0.875rem;
+      background-color: transparent;
+      color: var(--ink-secondary);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background-color 160ms var(--ease-settle), color 160ms var(--ease-settle), box-shadow 160ms var(--ease-settle);
+    }
+
+    .order-type-btn.active {
+      background-color: var(--dark-navy);
+      color: var(--white);
+      box-shadow: 0 2px 6px rgba(6, 59, 91, 0.22);
+    }
+
+    .delivery-fee-note {
+      margin-top: 12px;
       padding: 10px 14px;
       border-radius: var(--radius-sm);
-      border: 1.5px solid var(--space-blue);
-      background-color: rgba(7, 90, 133, 0.06);
-      font-weight: 700;
-      font-size: 0.9375rem;
-      color: var(--dark-navy);
+      background-color: rgba(255, 185, 35, 0.14);
+      border: 1px solid rgba(255, 185, 35, 0.65);
+      color: var(--ink-primary);
+      font-size: 0.84375rem;
+      font-weight: 600;
+      line-height: 1.5;
+    }
+
+    .summary-delivery-note {
+      margin-bottom: 14px;
+      padding: 10px 12px;
+      border-radius: var(--radius-sm);
+      background-color: rgba(255, 185, 35, 0.12);
+      border: 1px solid rgba(255, 185, 35, 0.45);
+      color: #FFE7A8;
+      font-size: 0.8125rem;
+      line-height: 1.45;
     }
 
     /* Live Order Summary Panel */
@@ -1625,6 +1671,33 @@
       color: var(--golden-yellow);
     }
 
+    .footer-social {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .social-icon-link {
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      background-color: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      color: var(--white);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: background-color 180ms var(--ease-settle), color 180ms var(--ease-settle), border-color 180ms var(--ease-settle), transform 180ms var(--ease-settle);
+    }
+
+    .social-icon-link:hover {
+      background-color: var(--golden-yellow);
+      border-color: var(--golden-yellow);
+      color: var(--deep-midnight);
+      transform: translateY(-2px);
+    }
+
     .footer-bottom {
       padding-top: 22px;
       display: flex;
@@ -1719,7 +1792,7 @@
 
       <div class="nav-actions">
         <a
-          href="https://wa.me/923263041122?text=Hello%20Cheesy%20Space!%20I%20would%20like%20to%20place%20a%20takeaway%20order."
+          href="https://wa.me/923263041122?text=Hello%20Cheesy%20Space!%20I%20would%20like%20to%20place%20an%20order."
           target="_blank"
           rel="noopener noreferrer"
           class="btn btn-primary nav-cta-desktop"
@@ -1752,7 +1825,7 @@
         <li><a href="#contact" class="mobile-nav-link">Contact</a></li>
       </ul>
       <a
-        href="https://wa.me/923263041122?text=Hello%20Cheesy%20Space!%20I%20would%20like%20to%20place%20a%20takeaway%20order."
+        href="https://wa.me/923263041122?text=Hello%20Cheesy%20Space!%20I%20would%20like%20to%20place%20an%20order."
         target="_blank"
         rel="noopener noreferrer"
         class="btn btn-primary"
@@ -1790,7 +1863,7 @@
           <div class="hero-meta-line">
             <span>Township, Lahore</span>
             <span aria-hidden="true">·</span>
-            <span>Takeaway &amp; Pickup</span>
+            <span>Home Delivery &amp; Take Away</span>
             <span aria-hidden="true">·</span>
             <span class="tabular-nums">Pizzas from Rs. 249 · Deals from Rs. 749</span>
           </div>
@@ -1819,7 +1892,7 @@
           <p class="section-kicker">Special Pizza Deals</p>
           <h2 class="section-title">Unbeatable Pizza Combos Made to Share</h2>
           <p class="section-lead">
-            Pick any deal below to customize your pizza flavours, add extra toppings if you like, and send your takeaway order straight to our WhatsApp.
+            Pick any deal below to customize your pizza flavours, add extra toppings if you like, and send your order straight to our WhatsApp.
           </p>
         </div>
 
@@ -1835,10 +1908,10 @@
     <section class="section section-white" id="order">
       <div class="container">
         <div class="section-header">
-          <p class="section-kicker">Quick Takeaway Builder</p>
+          <p class="section-kicker">Quick Order Builder</p>
           <h2 class="section-title">Customize Your Deal &amp; Order on WhatsApp</h2>
           <p class="section-lead">
-            Select your deal, choose flavours for every pizza, add optional extra toppings, and place your takeaway order directly on WhatsApp — no login or online payment required.
+            Select your deal, choose flavours for every pizza, add optional extra chicken or cheese toppings, and place your order directly on WhatsApp — no login or online payment required.
           </p>
         </div>
 
@@ -1858,19 +1931,23 @@
             </div>
 
             <div class="form-step">
-              <h3 class="step-heading">2. Pizza Flavours &amp; Optional Extra Toppings</h3>
+              <h3 class="step-heading">2. Pizza Flavours &amp; Extra Toppings</h3>
               <div class="topping-rates-bar" aria-label="Extra Topping Charges">
                 <div class="rate-item">
-                  <span>Large Extra Topping</span>
-                  <span class="rate-price tabular-nums">Rs. 100</span>
+                  <span>Large Chicken</span>
+                  <span class="rate-price tabular-nums">Rs. 100 each</span>
                 </div>
                 <div class="rate-item">
-                  <span>Medium Extra Topping</span>
-                  <span class="rate-price tabular-nums">Rs. 80</span>
+                  <span>Medium Chicken</span>
+                  <span class="rate-price tabular-nums">Rs. 80 each</span>
                 </div>
                 <div class="rate-item">
-                  <span>Small Extra Topping</span>
-                  <span class="rate-price tabular-nums">Rs. 50</span>
+                  <span>Small Chicken</span>
+                  <span class="rate-price tabular-nums">Rs. 50 each</span>
+                </div>
+                <div class="rate-item">
+                  <span>Extra Cheese</span>
+                  <span class="rate-price tabular-nums">Rs. 100 each</span>
                 </div>
               </div>
 
@@ -1883,7 +1960,7 @@
             </div>
 
             <div class="form-step">
-              <h3 class="step-heading">3. Quantity &amp; Customer Details</h3>
+              <h3 class="step-heading">3. Quantity, Order Type &amp; Customer Details</h3>
               <div class="form-row-2 field-group">
                 <div>
                   <label class="field-label" for="dealQuantityInput">Quantity of Deals</label>
@@ -1903,14 +1980,18 @@
                 </div>
                 <div>
                   <span class="field-label">Order Type</span>
-                  <div class="order-type-box">
-                    <span>Takeaway / Pickup</span>
-                    <span style="font-size:0.8rem;color:var(--space-blue);">Township Branch</span>
+                  <div class="order-type-toggle" role="group" aria-label="Order Type" id="orderTypeGroup">
+                    <button type="button" class="order-type-btn active" data-order-type="Home Delivery" aria-pressed="true">Home Delivery</button>
+                    <button type="button" class="order-type-btn" data-order-type="Take Away" aria-pressed="false">Take Away</button>
                   </div>
                 </div>
               </div>
 
-              <div class="field-group">
+              <div class="delivery-fee-note" id="deliveryFeeNote">
+                Note: Home delivery is Rs. 50 to Rs. 150 depending on distance and will be charged by the rider.
+              </div>
+
+              <div class="field-group" style="margin-top:16px;">
                 <label class="field-label" for="customerName">
                   Customer Name <span class="required-mark">*</span>
                 </label>
@@ -1947,7 +2028,7 @@
                   class="field-textarea"
                   id="specialInstructions"
                   name="specialInstructions"
-                  placeholder="Any pickup time note, spice preference, or extra request..."
+                  placeholder="Any delivery/pickup time note, spice preference, or extra request..."
                 ></textarea>
               </div>
             </div>
@@ -1957,13 +2038,13 @@
           <aside class="summary-panel" aria-label="Live Order Summary">
             <div class="summary-title">
               <span>Live Order Summary</span>
-              <span style="font-size:0.85rem;font-weight:600;color:var(--golden-yellow);">Takeaway</span>
+              <span id="summaryOrderTypeBadge" style="font-size:0.85rem;font-weight:600;color:var(--golden-yellow);">Home Delivery</span>
             </div>
 
             <div class="summary-block">
               <div class="summary-label">Selected Deal</div>
               <div class="summary-deal-name" id="summaryDealTitle">Deal #1</div>
-              <div class="summary-deal-desc" id="summaryDealDesc">3 Large Pizzas + 1.5 Litre Bottle</div>
+              <div class="summary-deal-desc" id="summaryDealDesc">3 Large Pizzas + 1.5 Litre Next Cola Bottle</div>
             </div>
 
             <div class="summary-block">
@@ -1998,6 +2079,10 @@
                 <span>Grand Total</span>
                 <span class="total-figure tabular-nums" id="summaryGrandTotal">Rs. 2,099</span>
               </div>
+            </div>
+
+            <div class="summary-delivery-note" id="summaryDeliveryNote">
+              Home delivery is Rs. 50 to Rs. 150 depending on distance (charged by rider).
             </div>
 
             <div class="form-feedback" id="orderFeedback" role="alert"></div>
@@ -2109,7 +2194,7 @@
             </div>
             <h3 class="feature-title">Easy WhatsApp Ordering</h3>
             <p class="feature-text">
-              Customize your deal right on this page and send a clean, itemized takeaway order in one click.
+              Customize your deal right on this page and send a clean, itemized order in one click.
             </p>
           </article>
         </div>
@@ -2163,7 +2248,7 @@
           <p class="section-kicker">Visit or Call Us</p>
           <h2 class="section-title">Opening Hours &amp; Location</h2>
           <p class="section-lead">
-            Drop by our Township branch for takeaway pickup or reach us directly by phone or WhatsApp.
+            Order Home Delivery, drop by our Township branch for Take Away pickup, or reach us directly by phone or WhatsApp.
           </p>
         </div>
 
@@ -2249,11 +2334,11 @@
       <div class="container final-cta-inner">
         <h2 class="final-cta-title">YOUR NEXT PIZZA CRAVING STARTS HERE! 🍕</h2>
         <p class="final-cta-text">
-          Choose your favourite deal, customize your pizzas, and order your takeaway in just a few clicks!
+          Choose your favourite deal, customize your pizzas, and place your order in just a few clicks!
         </p>
         <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:14px;">
           <a
-            href="https://wa.me/923263041122?text=Hello%20Cheesy%20Space!%20I%20would%20like%20to%20place%20a%20takeaway%20order."
+            href="https://wa.me/923263041122?text=Hello%20Cheesy%20Space!%20I%20would%20like%20to%20place%20an%20order."
             target="_blank"
             rel="noopener noreferrer"
             class="btn btn-primary"
@@ -2286,6 +2371,34 @@
           <p class="footer-desc">
             Serving hot, cheesy pizzas and value-packed family deals in Township, Lahore every day from 4:00 PM to 3:00 AM.
           </p>
+          <div class="footer-social" aria-label="Cheesy Space Social Media">
+            <a
+              href="https://www.facebook.com/cheesyspace"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="social-icon-link"
+              aria-label="Cheesy Space on Facebook"
+              title="Follow Cheesy Space on Facebook"
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M13.5 22v-8h2.7l.4-3h-3.1V9.1c0-.9.3-1.5 1.5-1.5h1.7V4.9c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3V11H7.3v3H10v8h3.5z"/>
+              </svg>
+            </a>
+            <a
+              href="https://www.instagram.com/cheesyspace"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="social-icon-link"
+              aria-label="Cheesy Space on Instagram"
+              title="Follow Cheesy Space on Instagram"
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              </svg>
+            </a>
+          </div>
         </div>
 
         <div>
@@ -2347,14 +2460,14 @@
 
       <div class="footer-bottom">
         <span>&copy; 2026 Cheesy Space. All Rights Reserved.</span>
-        <span>Township, Lahore · Takeaway &amp; Pickup</span>
+        <span>Township, Lahore · Home Delivery &amp; Take Away</span>
       </div>
     </div>
   </footer>
 
   <!-- Floating WhatsApp Button -->
   <a
-    href="https://wa.me/923263041122?text=Hello%20Cheesy%20Space!%20I%20would%20like%20to%20place%20a%20takeaway%20order."
+    href="https://wa.me/923263041122?text=Hello%20Cheesy%20Space!%20I%20would%20like%20to%20place%20an%20order."
     target="_blank"
     rel="noopener noreferrer"
     class="floating-wa"
@@ -2381,12 +2494,13 @@
        */
       const WHATSAPP_NUMBER = '923263041122';
 
-      // Extra topping price per pizza by size (PKR)
+      // Extra chicken topping price per pizza by size (PKR) & flat extra cheese rate
       const TOPPING_RATES = {
         Large: 100,
         Medium: 80,
         Small: 50
       };
+      const EXTRA_CHEESE_RATE = 100;
 
       // Signature Pizza Flavours
       const EDITABLE_PIZZA_FLAVOURS = [
@@ -2396,11 +2510,10 @@
         'BBQ Burst'
       ];
 
-      // Editable Extra Topping Options
+      // Extra Topping Options (Extra Chicken by size + Extra Cheese Rs. 100)
       const EDITABLE_EXTRA_TOPPINGS = [
-        { id: 'topping_1', label: 'Extra Cheese' },
-        { id: 'topping_2', label: 'Extra Topping Option 1 (Editable)' },
-        { id: 'topping_3', label: 'Extra Topping Option 2 (Editable)' }
+        { id: 'extra_chicken', label: 'Extra Chicken Topping', isCheese: false },
+        { id: 'extra_cheese', label: 'Extra Cheese', isCheese: true }
       ];
 
       // Orderable Options (5 Special Deals + 3 Single Pizza Sizes)
@@ -2624,13 +2737,13 @@
         {
           id: 'menu-toppings',
           category: 'Extra Toppings',
-          title: 'Extra Toppings by Pizza Size',
-          description: 'Add extra cheese or extra toppings to any pizza: Large Rs. 100 · Medium Rs. 80 · Small Rs. 50 per extra topping.',
+          title: 'Extra Chicken & Cheese Toppings',
+          description: '4 extra topping options: Extra Chicken (Large Rs. 100, Medium Rs. 80, Small Rs. 50 each) & Extra Cheese (Rs. 100 each).',
           priceText: 'Rs. 50 – Rs. 100',
           isInquiry: false,
-          whatsappInquiry: 'Hello Cheesy Space! Please share your available Extra Toppings list.',
+          whatsappInquiry: 'Hello Cheesy Space! I would like to add Extra Chicken or Extra Cheese toppings to my order.',
           image: './src/assets/images/menu_pizza_assortment_1795028301131.jpg',
-          imageAlt: 'Pizza slices loaded with extra cheese and fresh toppings'
+          imageAlt: 'Pizza slices loaded with extra chicken and melted extra cheese toppings'
         }
       ];
 
@@ -2642,6 +2755,7 @@
       const state = {
         selectedDealId: DEALS[0].id,
         quantity: 1,
+        orderType: 'Home Delivery',
         activeMenuCategory: 'all',
         // Per-pizza slot state: [{ size, flavour, toppings: string[] }]
         pizzaSlots: []
@@ -2657,9 +2771,12 @@
       const qtyMinusBtn = document.getElementById('qtyMinusBtn');
       const qtyPlusBtn = document.getElementById('qtyPlusBtn');
       const dealQuantityInput = document.getElementById('dealQuantityInput');
+      const orderTypeGroup = document.getElementById('orderTypeGroup');
+      const deliveryFeeNote = document.getElementById('deliveryFeeNote');
       const customerNameInput = document.getElementById('customerName');
       const customerAddressInput = document.getElementById('customerAddress');
       const specialInstructionsInput = document.getElementById('specialInstructions');
+      const summaryOrderTypeBadge = document.getElementById('summaryOrderTypeBadge');
       const summaryDealTitle = document.getElementById('summaryDealTitle');
       const summaryDealDesc = document.getElementById('summaryDealDesc');
       const summaryFlavoursList = document.getElementById('summaryFlavoursList');
@@ -2670,10 +2787,18 @@
       const summaryDealPrice = document.getElementById('summaryDealPrice');
       const summaryExtraPrice = document.getElementById('summaryExtraPrice');
       const summaryGrandTotal = document.getElementById('summaryGrandTotal');
+      const summaryDeliveryNote = document.getElementById('summaryDeliveryNote');
       const orderFeedback = document.getElementById('orderFeedback');
       const placeOrderBtn = document.getElementById('placeOrderBtn');
       const menuFilterBar = document.getElementById('menuFilterBar');
       const menuGrid = document.getElementById('menuGrid');
+
+      function getToppingPrice(toppingId, size) {
+        if (toppingId === 'extra_cheese') {
+          return EXTRA_CHEESE_RATE;
+        }
+        return TOPPING_RATES[size] || 100;
+      }
 
       function formatPKR(amount) {
         return 'Rs. ' + Number(amount).toLocaleString('en-PK');
@@ -2774,7 +2899,7 @@
 
       function renderPizzaSlots() {
         pizzaSlotsContainer.innerHTML = state.pizzaSlots.map(function (slot, idx) {
-          const rate = TOPPING_RATES[slot.size] || 100;
+          const chickenRate = TOPPING_RATES[slot.size] || 100;
           const flavourOptionsHtml = EDITABLE_PIZZA_FLAVOURS.map(function (flav) {
             const selected = slot.flavour === flav ? ' selected' : '';
             return '<option value="' + flav.replace(/"/g, '&quot;') + '"' + selected + '>' + flav + '</option>';
@@ -2782,10 +2907,11 @@
 
           const toppingsHtml = EDITABLE_EXTRA_TOPPINGS.map(function (top) {
             const checked = slot.toppings.includes(top.id) ? ' checked' : '';
+            const price = getToppingPrice(top.id, slot.size);
             return (
               '<label class="topping-option">' +
                 '<input type="checkbox" data-slot-index="' + idx + '" data-topping-id="' + top.id + '"' + checked + ' />' +
-                '<span>' + top.label + ' (+Rs. ' + rate + ')</span>' +
+                '<span>' + top.label + ' (+Rs. ' + price + ')</span>' +
               '</label>'
             );
           }).join('');
@@ -2794,7 +2920,7 @@
             '<div class="pizza-slot-row">' +
               '<div class="pizza-slot-header">' +
                 '<span class="pizza-slot-title">Pizza #' + (idx + 1) + ' (' + slot.size + ')</span>' +
-                '<span class="pizza-slot-rate tabular-nums">Extra Topping: Rs. ' + rate + ' each</span>' +
+                '<span class="pizza-slot-rate tabular-nums">Chicken: Rs. ' + chickenRate + ' · Cheese: Rs. ' + EXTRA_CHEESE_RATE + '</span>' +
               '</div>' +
               '<label class="field-label" for="pizzaFlavour_' + idx + '">Select Pizza Flavour <span class="required-mark">*</span></label>' +
               '<select class="field-select pizza-flavour-select" id="pizzaFlavour_' + idx + '" data-slot-index="' + idx + '" required>' +
@@ -2820,14 +2946,15 @@
 
         state.pizzaSlots.forEach(function (slot, idx) {
           if (slot.toppings.length > 0) {
-            const rate = TOPPING_RATES[slot.size] || 100;
-            const slotExtra = slot.toppings.length * rate;
+            let slotExtra = 0;
+            const names = slot.toppings.map(function (tid) {
+              const price = getToppingPrice(tid, slot.size);
+              slotExtra += price;
+              const found = EDITABLE_EXTRA_TOPPINGS.find(function (t) { return t.id === tid; });
+              return (found ? found.label : tid) + ' (Rs. ' + price + ')';
+            });
             extraPerDeal += slotExtra;
 
-            const names = slot.toppings.map(function (tid) {
-              const found = EDITABLE_EXTRA_TOPPINGS.find(function (t) { return t.id === tid; });
-              return found ? found.label : tid;
-            });
             extraDetails.push(
               'Pizza ' + (idx + 1) + ' (' + slot.size + '): ' + names.join(', ') + ' (+' + formatPKR(slotExtra) + ')'
             );
@@ -2849,6 +2976,13 @@
 
       function renderOrderSummary() {
         const totals = calculateOrderTotals();
+
+        if (summaryOrderTypeBadge) {
+          summaryOrderTypeBadge.textContent = state.orderType;
+        }
+        if (summaryDeliveryNote) {
+          summaryDeliveryNote.style.display = state.orderType === 'Home Delivery' ? 'block' : 'none';
+        }
 
         summaryDealTitle.textContent = totals.deal.number;
         summaryDealDesc.textContent = totals.deal.summary;
@@ -2973,10 +3107,14 @@
           : 'None';
 
         const addressLine = address ? ('Address: ' + address + '\n\n') : '';
+        const deliveryLine = state.orderType === 'Home Delivery'
+          ? 'Delivery Charges: Rs. 50 to Rs. 150 depending on distance (charged by rider).\n\n'
+          : '';
 
         const message =
           'Hello Cheesy Space! 🍕🚀\n\n' +
-          'I would like to place a TAKEAWAY order.\n\n' +
+          'I would like to place an order.\n\n' +
+          'Order Type: ' + state.orderType + '\n\n' +
           'Customer Name: ' + name + '\n\n' +
           addressLine +
           'Selected Deal: ' + totals.deal.number + '\n' +
@@ -2986,6 +3124,7 @@
           'Extra Toppings: ' + toppingsBlock + '\n\n' +
           'Quantity: ' + state.quantity + '\n\n' +
           'Total Amount: ' + formatPKR(totals.grandTotal) + '\n\n' +
+          deliveryLine +
           'Special Instructions: ' + instructions + '\n\n' +
           'Please confirm my order. Thank you!';
 
@@ -3085,6 +3224,24 @@
       customerAddressInput.addEventListener('input', function () {
         renderOrderSummary();
       });
+
+      // Order Type Toggle (Home Delivery by default / Take Away)
+      if (orderTypeGroup) {
+        orderTypeGroup.addEventListener('click', function (e) {
+          const btn = e.target.closest('[data-order-type]');
+          if (!btn) return;
+          state.orderType = btn.getAttribute('data-order-type') || 'Home Delivery';
+          orderTypeGroup.querySelectorAll('[data-order-type]').forEach(function (el) {
+            const isSelected = el === btn;
+            el.classList.toggle('active', isSelected);
+            el.setAttribute('aria-pressed', String(isSelected));
+          });
+          if (deliveryFeeNote) {
+            deliveryFeeNote.style.display = state.orderType === 'Home Delivery' ? 'block' : 'none';
+          }
+          renderOrderSummary();
+        });
+      }
 
       // Place Order on WhatsApp
       placeOrderBtn.addEventListener('click', function () {

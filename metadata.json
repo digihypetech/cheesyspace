@@ -2,5 +2,7 @@
   "name": "Cheesy Space",
   "description": "Cheesy Space pizza restaurant in Township, Lahore — special pizza deals, interactive takeaway menu, and instant WhatsApp ordering.",
   "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
 }
